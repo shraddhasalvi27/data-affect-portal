@@ -1,19 +1,13 @@
 "use client";
-
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
-
+import { getUserInfo } from "../lib/axios";
 export default function HomePage() {
   const router = useRouter();
-
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        await axios.get("http://127.0.0.1:5000/users/me", {
-          withCredentials: true,
-        });
-
+        await getUserInfo();
         router.replace("/dashboard");
       } catch (error) {
         router.replace("/landing");

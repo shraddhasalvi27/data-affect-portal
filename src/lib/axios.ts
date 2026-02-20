@@ -6,7 +6,8 @@ type ApiErrorResponse = {
   errors?: { msg: string }[];
 };
 const axiosInstance = axios.create({
-     baseURL: "/newapi",
+  baseURL: "/newapi",
+  withCredentials: true,
   headers: {
     "Content-Type": "application/json",
   },
@@ -57,6 +58,9 @@ export const connectWithGit = () => {
   window.location.href = "http://127.0.0.1:5000/auth/github";
 };
 
-export const getUserInfo = () =>{
-  axiosInstance.get("/user-info");
+export const getUserInfo = () => {
+  return axiosInstance.get("/user-info");
+}
+export const userLogout = () => {
+  return axiosInstance.post('/logout');
 }
