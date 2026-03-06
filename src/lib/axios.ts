@@ -37,7 +37,7 @@ axiosInstance.interceptors.response.use(
       localStorage.clear();
       // Redirect to signin page
       if (typeof window !== "undefined") {
-        window.location.href = "/signin";
+        window.location.href = "/landing";
       }
       return Promise.reject(error);
       // Router.push("/signin");
@@ -60,6 +60,9 @@ export const connectWithGit = () => {
 
 export const getUserInfo = () => {
   return axiosInstance.get("/user-info");
+}
+export const getRepos = () => {
+  return axiosInstance.get("/repos");
 }
 export const userLogout = () => {
   return axiosInstance.post('/logout');
